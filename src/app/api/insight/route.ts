@@ -144,6 +144,12 @@ export async function OPTIONS() {
 }
 
 function generateErrorCard(message: string, theme: ReturnType<typeof getTheme>): string {
+  const safeMessage = message
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .slice(0, 120);
   return `
 <svg xmlns="http://www.w3.org/2000/svg" width="500" height="120" viewBox="0 0 500 120">
   <rect x="0" y="0" width="500" height="120" rx="12" fill="${theme.background}"/>
@@ -152,7 +158,7 @@ function generateErrorCard(message: string, theme: ReturnType<typeof getTheme>):
     ⚠️ Error
   </text>
   <text x="250" y="80" text-anchor="middle" font-size="14" fill="${theme.text}" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji'">
-    ${message}
+    ${safeMessage}
   </text>
 </svg>
   `.trim();
