@@ -43,8 +43,6 @@ interface CardThemeOption {
 const CARD_THEMES: CardThemeOption[] = [
   { id: 'github_dark', name: 'GitHub Dark', bgColor: '#0d1117', cardColor: '#161b22', accentColor: '#58a6ff', textColor: '#c9d1d9' },
   { id: 'github_light', name: 'GitHub Light', bgColor: '#f6f8fa', cardColor: '#ffffff', accentColor: '#0550ae', textColor: '#24292f' },
-  { id: 'monochrome', name: 'Monochrome', bgColor: '#0A0A0A', cardColor: '#0A0A0A', accentColor: '#ffffff', textColor: '#ffffff' },
-  { id: 'monochrome_light', name: 'Monochrome Light', bgColor: '#fafafa', cardColor: '#ffffff', accentColor: '#0a0a0a', textColor: '#0a0a0a' },
   { id: 'tokyonight', name: 'Tokyo Night', bgColor: '#1a1b26', cardColor: '#24283b', accentColor: '#70a5fd', textColor: '#a9b1d6' },
   { id: 'dracula', name: 'Dracula', bgColor: '#282a36', cardColor: '#44475a', accentColor: '#ff79c6', textColor: '#f8f8f2' },
   { id: 'radical', name: 'Radical', bgColor: '#141321', cardColor: '#1a1b27', accentColor: '#fe428e', textColor: '#f8f8f2' },
@@ -52,6 +50,8 @@ const CARD_THEMES: CardThemeOption[] = [
   { id: 'ocean', name: 'Ocean', bgColor: '#0a192f', cardColor: '#112240', accentColor: '#64ffda', textColor: '#ccd6f6' },
   { id: 'ocean_radical', name: 'Ocean Radical', bgColor: '#050b14', cardColor: '#0a192f', accentColor: '#fe428e', textColor: '#ccd6f6' },
   { id: 'neo_green', name: 'Neo Green', bgColor: '#121212', cardColor: '#181818', accentColor: '#00c875', textColor: '#a6e22e' },
+  { id: 'monochrome', name: 'Monochrome', bgColor: '#0A0A0A', cardColor: '#0A0A0A', accentColor: '#ffffff', textColor: '#ffffff' },
+  { id: 'monochrome_light', name: 'Monochrome Light', bgColor: '#fafafa', cardColor: '#ffffff', accentColor: '#0a0a0a', textColor: '#0a0a0a' },
 ];
 
 const DEMO_USERNAMES = ['mojombo', 'torvalds', 'karpathy', 'sindresorhus', 'gaearon', 'shadcn'];

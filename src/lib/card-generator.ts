@@ -167,9 +167,6 @@ function renderHeaderSection(
   const rawLogin = user.login.trim();
   const hasDistinctName = rawName !== "" && rawName.toLowerCase() !== rawLogin.toLowerCase();
 
-  // Word-boundary truncation prevents overflow on long names/locations,
-  // full values stay available via <title> tooltips. No uppercase transform
-  // so the existing visual language is preserved.
   const displayName = truncateWords(rawName || rawLogin, 32);
   const name = escapeHtml(displayName);
   const fullName = escapeHtml(rawName || rawLogin);
@@ -457,17 +454,17 @@ function renderStatsCard(
       <rect x="0" y="0" width="377" height="200" rx="14" fill="${
         theme.cardBackground
       }" stroke="${theme.border}" stroke-width="1"/>
-      <g transform="translate(24, 28)">${renderIcon(
+      <g transform="translate(24, 24)">${renderIcon(
         "activity",
         0,
         -1,
         theme.accent,
         18
-      )}<text x="28" y="13" font-size="16" font-weight="600" fill="${
+      )}<text x="28" y="14" font-size="16" font-weight="600" fill="${
     theme.title
   }" font-family="${FONT_FAMILY}" letter-spacing="0.3">GitHub Stats</text></g>
-      <rect class="mi-underline mi-underline-left" x="24" y="44" width="72" height="2" rx="1" fill="${theme.accent}" opacity="0.7"/>
-      <g transform="translate(24, 60)">${statsSvgParts.join("")}</g>
+      <rect class="mi-underline mi-underline-left" x="24" y="48" width="72" height="2" rx="1" fill="${theme.accent}" opacity="0.7"/>
+      <g transform="translate(24, 64)">${statsSvgParts.join("")}</g>
       <g transform="translate(290, 58)">
         <circle cx="36" cy="36" r="40" fill="${
           theme.background
@@ -570,24 +567,24 @@ function renderLanguagesCard(
       <rect x="0" y="0" width="377" height="200" rx="14" fill="${
         theme.cardBackground
       }" stroke="${theme.border}" stroke-width="1"/>
-      <g transform="translate(24, 28)">${renderIcon(
+      <g transform="translate(24, 24)">${renderIcon(
         "code",
         0,
         -1,
         theme.accent,
         18
-      )}<text x="28" y="13" font-size="16" font-weight="600" fill="${
+      )}<text x="28" y="14" font-size="16" font-weight="600" fill="${
     theme.title
   }" font-family="${FONT_FAMILY}" letter-spacing="0.3">Most Used Languages</text></g>
-      <rect class="mi-underline mi-underline-left" x="24" y="44" width="72" height="2" rx="1" fill="${theme.accent}" opacity="0.7"/>
-      <g transform="translate(24, 60)">
+      <rect class="mi-underline mi-underline-left" x="24" y="48" width="72" height="2" rx="1" fill="${theme.accent}" opacity="0.7"/>
+      <g transform="translate(24, 64)">
         <defs><clipPath id="${clipId}"><rect x="0" y="0" width="${barWidth}" height="${barHeight}" rx="${borderRadius}"/></clipPath></defs>
         <rect x="0" y="0" width="${barWidth}" height="${barHeight}" rx="${borderRadius}" fill="${
     theme.background
   }"/>
         <g class="mi-bar" clip-path="url(#${clipId})">${segmentsSvg}</g>
       </g>
-      <g transform="translate(24, 88)">${leftLangsSvg}${rightLangsSvg}</g>
+      <g transform="translate(24, 92)">${leftLangsSvg}${rightLangsSvg}</g>
     </g>`;
 
   return { svg, height: 218 };
@@ -819,23 +816,23 @@ function renderContributionLineGraph(
 
   const svg = `<g class="mi-card mi-d4" transform="translate(40, ${startY})">
       <rect x="0" y="0" width="${innerWidth}" height="${
-    graphHeight + 80
+    graphHeight + 116
   }" rx="14" fill="${theme.cardBackground}" stroke="${
     theme.border
   }" stroke-width="1"/>
-      <g transform="translate(24, 26)">${renderIcon(
+      <g transform="translate(24, 24)">${renderIcon(
         "history",
         0,
         -1,
         theme.accent,
         18
-      )}<text x="28" y="13" font-size="15" font-weight="600" fill="${
+      )}<text x="28" y="14" font-size="15" font-weight="600" fill="${
     theme.title
-  }" font-family="${FONT_FAMILY}" letter-spacing="0.3">Contribution Activity</text><text x="28" y="34" font-size="12" fill="${
+  }" font-family="${FONT_FAMILY}" letter-spacing="0.3">Contribution Activity</text><text x="28" y="32" font-size="12" fill="${
     theme.textSecondary
   }" font-family="${FONT_FAMILY}" letter-spacing="0.2">Daily contributions · ${monthLabel}</text></g>
-      <rect class="mi-underline mi-underline-left" x="24" y="70" width="72" height="2" rx="1" fill="${theme.accent}" opacity="0.7"/>
-      <g transform="translate(36, 78)">
+      <rect class="mi-underline mi-underline-left" x="24" y="66" width="72" height="2" rx="1" fill="${theme.accent}" opacity="0.7"/>
+      <g transform="translate(36, 80)">
         <text x="0" y="5" font-size="10" fill="${
           theme.textSecondary
         }" text-anchor="end" font-family="${FONT_FAMILY}" letter-spacing="0.2">${maxCount}</text>
@@ -859,7 +856,7 @@ function renderContributionLineGraph(
     graphWidth + 12
   }" y2="${graphHeight}" stroke="${theme.border}" stroke-width="0.5"/>
       </g>
-      <g transform="translate(52, 78)">
+      <g transform="translate(52, 80)">
         <defs><linearGradient id="${graphGradientId}" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" style="stop-color:${
           theme.accent
         };stop-opacity:0.3"/><stop offset="100%" style="stop-color:${
@@ -871,10 +868,10 @@ function renderContributionLineGraph(
   }" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
         ${dataPointsSvg}
       </g>
-      <g transform="translate(52, ${graphHeight + 88})">${xAxisLabelsSvg}</g>
+      <g transform="translate(52, ${graphHeight + 94})">${xAxisLabelsSvg}</g>
     </g>`;
 
-  return { svg, height: graphHeight + 98 };
+  return { svg, height: graphHeight + 134 };
 }
 
 export function generateInsightCard(
